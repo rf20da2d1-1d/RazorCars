@@ -1,0 +1,27 @@
+﻿@page
+@model RazorCars.Pages.Cars.IndexModel
+@{
+    ViewData["Title"] = "Peters Cars";
+}
+
+<table class="table">
+    <thead>
+    <th>Id</th>
+    <th>Navn</th>
+    <th>Beskrivelse</th>
+    </thead>
+    <tbody>
+        @foreach (var c in Model.Cars)
+        {
+            <tr>
+                <td>@c.Id</td>
+                <td>@c.Model</td>
+                <td>@c.Color</td>
+                <td><a asp-page="EditCar" asp-route-id="@c.Id">Edit</a></td>
+                <td><a asp-page="DeleteCar" asp-route-id="@c.Id">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p></p>
+<a asp-page="CreateCar">Laver en ny Bil</a>
