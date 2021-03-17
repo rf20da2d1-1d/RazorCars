@@ -20,6 +20,9 @@ namespace RazorCars.Pages.Cars
         public EditCarModel(ICarPersistence cars)
         {
             _cars = cars;
+
+            List<int> l = new List<int>();
+            l.Sort();
         }
 
         public IActionResult OnGet(int id)
@@ -30,10 +33,13 @@ namespace RazorCars.Pages.Cars
 
         public IActionResult OnPost(int id)
         {
-            Car c = _cars.GetCarById(id);
-            c.Model = ACar.Model;
-            c.Color = ACar.Color;
+            _cars.UpdatCar(id, ACar);
 
+            //Car c = _cars.GetCarById(id);
+            //c.Model = ACar.Model;
+            //c.Color = ACar.Color;
+
+            
             return RedirectToPage("Index");
         }
     }
