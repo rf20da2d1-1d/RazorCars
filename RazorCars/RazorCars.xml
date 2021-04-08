@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RazorCars</name>
+    </assembly>
+    <members>
+        <member name="T:RazorCars.helper.JsonHelper`1">
+            <summary>
+            This class have two methods one for reading json-file and one for writing to a json-file 
+            </summary>
+            <typeparam name="T">Can be any class but not simple types</typeparam>
+        </member>
+        <member name="M:RazorCars.helper.JsonHelper`1.SaveToJsonAsync(System.Collections.Generic.ICollection{`0},System.String)">
+            <summary>
+            Save an objekt to a file in json format
+            </summary>
+            <param name="data">the collection to be saved</param>
+            <param name="filename">the full filename of the json-file</param>
+            <returns>A task i.e. wait for the saving to be done</returns>
+        </member>
+    </members>
+</doc>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -21,9 +22,11 @@ namespace RazorCars.Pages.Cars
         //};
 
 
-        private ICarPersistence _cars;
+        //private ICarPersistence _cars;
+        private ICarPersistenceAsync _cars;
 
-        public IndexModel(ICarPersistence cars)
+        
+        public IndexModel(ICarPersistenceAsync cars)
         {
             _cars = cars;
         }
@@ -35,9 +38,10 @@ namespace RazorCars.Pages.Cars
         public List<Car> Cars { get; private set; }
 
         //public Car ACar { get; private set; }
-        public void OnGet()
+        public  void OnGet()
         {
-            Cars = _cars.GetAll();
+            Task<List<Car>> task = _cars.GetAll();
+            Cars = task.Result;
         }
     }
 }

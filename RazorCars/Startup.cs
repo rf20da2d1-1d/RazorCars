@@ -26,6 +26,8 @@ namespace RazorCars
             services.AddRazorPages();
 
             services.AddSingleton<ICarPersistence, DBCarPersistence>();
+            services.AddSingleton<ICarPersistenceAsync, DBCarPersistenceAsync>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

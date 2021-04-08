@@ -8,9 +8,19 @@ using System.Threading.Tasks;
 
 namespace RazorCars.helper
 {
-    public static class JsonHelper<T> where T : class
+    /// <summary>
+    /// This class have two methods one for reading json-file and one for writing to a json-file 
+    /// </summary>
+    /// <typeparam name="T">Can be any class but not simple types</typeparam>
+    public  class JsonHelper<T> where T : class
     {
-        public async static Task SaveToJsonAsync(ICollection<T> data, String filename)
+        /// <summary>
+        /// Save an objekt to a file in json format
+        /// </summary>
+        /// <param name="data">the collection to be saved</param>
+        /// <param name="filename">the full filename of the json-file</param>
+        /// <returns>A task i.e. wait for the saving to be done</returns>
+        public async  Task SaveToJsonAsync(ICollection<T> data, String filename)
         {
             using (FileStream outfile = File.Create(filename))
             {
@@ -24,7 +34,7 @@ namespace RazorCars.helper
         }
 
 
-        public async static Task<ICollection<T>> ReadFromJson(string filename)
+        public async  Task<ICollection<T>> ReadFromJson(string filename)
         {
             if (!File.Exists(filename))
             {
